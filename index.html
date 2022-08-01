@@ -25,11 +25,18 @@
 		<header>
 			<img src="/assets/logo.png" alt="Logo da Disney Plus">
 
-			<button type="button" class="button_menu">
+			<button type="button" class="button__menu" onclick="changeButtonMenu()">
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
+
+			<nav class="navigation">
+				<h2>Movies</h2>
+				<ul id="movies">
+
+				</ul>
+			</nav>
 		</header>
 		<main>
 			<section class="feature__movie">
@@ -45,16 +52,16 @@
 				<!-- Sinopse do filme -->
 				<p></p>
 
-				<button><img src="/assets/icon-play.png" alt="Icone play" /> Watch Now</button>
+				<button type="button"><img src="/assets/icon-play.png" alt="Icone play"/>Assistir agora</button>
 			</section>
-			<aside class="movies">
+			<!-- <aside class="movies">
 				<h2>Movies</h2>
 				<div>
 					<ul id="movies__list">
-						
+
 					</ul>
 				</div>
-			</aside>
+			</aside> -->
 		</main>
 	</div>
 	<script src="./scripts/index.js"></script>
