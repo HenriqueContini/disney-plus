@@ -2,16 +2,28 @@
     position: fixed;
     top: 0;
     right: -660px;
+
     width: 660px;
     height: 100%;
 
-    padding-top: 66px;
-    padding-left: 54px;
-    padding-right: 80px;
+    padding: 66px 80px 30px 54px;
 
-    background: var(--linear);
+    background: #1c4566;
 
     transition: all 0.6s;
+    overflow: auto;
+}
+
+.navigation::-webkit-scrollbar {
+    width: 0.2rem;
+}
+
+.navigation::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.navigation::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
 }
 
 .navigation.active {
@@ -22,4 +34,27 @@
     font-size: 1.75rem;
     line-height: 2.125rem;
     font-weight: 700;
+}
+
+@media screen and (max-height: 750px) {
+    .navigation {
+        padding: 60px 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navigation {
+        width: 100vw;
+        right: -100vw;
+    }
+
+    .navigation.active {
+        transform: translateX(-100vw);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .navigation {
+        padding: 44px 24px 24px;
+    }
 }

@@ -8,6 +8,8 @@ const BASE_URL_IMAGE = {
 const movies = [];
 const moviesElement = document.getElementById('movies');
 
+let movieActive = '';
+
 function getUrlMovie(movieId) {
     return `https://api.themoviedb.org/3/movie/${movieId}?language=${API_LANGUAGE}&api_key=${API_KEY}`;
 }
@@ -35,10 +37,27 @@ function setMainMovie(movie) {
     appImage.setAttribute('src', movie.image.original);
 }
 
+function changeMovieActiveInList(newMovieActive) {
+    const movieActiveCurrent = document.getElementById(movieActive);
+    movieActiveCurrent.classList.remove('active-movie');
+
+    const movieActiveNew = document.getElementById(newMovieActive);
+    movieActiveNew.classList.add('active-movie');
+
+    movieActive = newMovieActive;
+}
+
 function changeMainMovie(movieId) {
+    changeMovieActiveInList(movieId);
+
     const movie = movies.find(movie => movie.id === movieId);
-    setMainMovie(movie);
-    changeButtonMenu();
+
+    if(movie?.id) {
+        setMainMovie(movie);
+        changeButtonMenu();
+    } else {
+        console.log('Não foi possível achar o filme com o id', movieId)
+    }
 }
 
 function createButtonMovie(movieId) {
@@ -62,10 +81,11 @@ function createImageMovie(movieImage, movieTitle) {
     return divImageMovie;
 }
 
-
 function addMovieInList(movie) {
     const movieElement = document.createElement('li');
     movieElement.classList.add('movie');
+
+    movieElement.setAttribute('id', movie.id);
 
     const genre = `<span>${movie.genre}</span>`;
     const title = `<strong>${movie.title}</strong>`;
@@ -77,13 +97,16 @@ function addMovieInList(movie) {
     moviesElement.appendChild(movieElement);
 }
 
-function loadMovies() {
-    const LIST_MOVIES = ['tt12801262', 'tt4823776', 'tt7146812', 'tt2948372', 'tt3521164', 'tt2096673', 'tt5109280', 'tt2380307'];
+async function getMovieData(movieId) {
+    const isMovieInList = movies.findIndex(movie => movie.id === movieId);
 
-    LIST_MOVIES.map((movie, index) => {
-        fetch(getUrlMovie(movie)).then(response => response.json()).then(data => {
+    if(isMovieInList === -1) {
+        try {
+            let data = await fetch(getUrlMovie(movieId));
+            data = await data.json();
+        
             const movieData = {
-                id: movie,
+                id: movieId,
                 title: data.title,
                 overview: data.overview,
                 vote_average: data.vote_average,
@@ -94,16 +117,60 @@ function loadMovies() {
                     small: BASE_URL_IMAGE.small.concat(data.backdrop_path)
                 }
             }
-            
+    
             movies.push(movieData);
+        
+            return movieData;
+        } catch(error) {
+            console.log('Mensagem de erro: ' + error.message);
+        }
+    }
 
-            if(index === 0) {
-                setMainMovie(movieData);
-            }
+    return null;
 
-            addMovieInList(movieData)
-        })
+}
+
+function loadMovies() {
+    const LIST_MOVIES = ['tt12801262', 'tt4823776', 'tt5113044', 'tt2948372','tt5109280', 'tt0266543'];
+
+    LIST_MOVIES.map(async (movie, index) => {
+        const movieData = await getMovieData(movie);
+
+        addMovieInList(movieData);
+
+        if(index === 0) {
+            setMainMovie(movieData);
+
+            movieActive = movieData.id;
+
+            const movieActiveNew = document.getElementById(movieActive);
+            movieActiveNew.classList.add('active-movie');
+        }
     })
 }
+
+function formattedMovieId(movieId) {
+    if(movieId.includes('https://www.imdb.com/title/')) {
+        const id = movieId.split('/')[4];        
+        return id;
+    }
+
+    return movieId;
+}
+
+const buttonAddMovie = document.getElementById('add__movie');
+
+buttonAddMovie.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const newMovieId = formattedMovieId(event.target['movie'].value);
+    const newMovie = await getMovieData(newMovieId);
+
+    if(newMovie?.id) {
+        addMovieInList(newMovie);
+    }
+
+    event.target['movie'].value = '';
+})
 
 loadMovies();
