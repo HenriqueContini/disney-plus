@@ -28,7 +28,7 @@ function setMainMovie(movie) {
     const description = document.querySelector('.feature__movie p');
     const info = document.querySelector('.feature__movie span');
     const rating = document.querySelector('.rating strong');
-    const buttonWatch = document.querySelector('.link__watch-now');
+    const buttonWatch = document.querySelector('.link__movie');
 
     title.innerHTML = movie.title;
     description.innerHTML = movie.overview;

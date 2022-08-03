@@ -36,10 +36,10 @@
     max-width: 800px;
 }
 
-.link__watch-now {
+.link__movie {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     font-weight: 500;
 
@@ -55,7 +55,7 @@
     transition: filter 0.6s;
 }
 
-.link__watch-now:hover {
+.link__movie:hover {
     filter: brightness(0.85);
 }
 
@@ -65,12 +65,12 @@
         line-height: 3.25rem;
     }
 
-    .link__watch-now {
+    .link__movie {
         width: 240px;
         height: 60px;
     }
 
-    .link__watch-now img {
+    .link__movie img {
         width: 16px;
         height: auto;
     }
@@ -98,7 +98,7 @@
         -webkit-box-orient: vertical;
     }
 
-    .link__watch-now {
+    .link__movie {
         width: 175px;
         height: 48px;
         font-size: 0.875rem;
@@ -106,7 +106,7 @@
         padding: 0 32px;
     }
     
-    .link__watch-now img {
+    .link__movie img {
         width: 14px;
         height: auto;
     }
