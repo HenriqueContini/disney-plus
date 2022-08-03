@@ -36,7 +36,7 @@
     max-width: 800px;
 }
 
-.feature__movie button {
+.link__watch-now {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -55,7 +55,7 @@
     transition: filter 0.6s;
 }
 
-.feature__movie button:hover {
+.link__watch-now:hover {
     filter: brightness(0.85);
 }
 
@@ -65,12 +65,12 @@
         line-height: 3.25rem;
     }
 
-    .feature__movie button {
+    .link__watch-now {
         width: 240px;
         height: 60px;
     }
 
-    .feature__movie button img {
+    .link__watch-now img {
         width: 16px;
         height: auto;
     }
@@ -98,7 +98,7 @@
         -webkit-box-orient: vertical;
     }
 
-    .feature__movie button {
+    .link__watch-now {
         width: 175px;
         height: 48px;
         font-size: 0.875rem;
@@ -106,7 +106,7 @@
         padding: 0 32px;
     }
     
-    .feature__movie button img {
+    .link__watch-now img {
         width: 14px;
         height: auto;
     }

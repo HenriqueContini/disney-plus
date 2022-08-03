@@ -28,11 +28,13 @@ function setMainMovie(movie) {
     const description = document.querySelector('.feature__movie p');
     const info = document.querySelector('.feature__movie span');
     const rating = document.querySelector('.rating strong');
+    const buttonWatch = document.querySelector('.link__watch-now');
 
     title.innerHTML = movie.title;
     description.innerHTML = movie.overview;
     rating.innerHTML = movie.vote_average;
     info.innerHTML = `${movie.release} - ${movie.genre} - Movie`;
+    buttonWatch.href = `https://www.imdb.com/title/${movie.id}`;
 
     appImage.setAttribute('src', movie.image.original);
 }
