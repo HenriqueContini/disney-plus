@@ -8,11 +8,6 @@
     list-style: none;
 }
 
-.movies ul {
-    display: flex;
-    flex-direction: column;
-}
-
 .movie {
     display: flex;
     flex-direction: column;
