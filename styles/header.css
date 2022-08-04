@@ -14,7 +14,7 @@ header {
     
     z-index: 2;
 
-    width: 46px;
+    width: 40px;
 
     background: transparent;
 }
@@ -22,7 +22,7 @@ header {
 .button__menu span {
     display: block;
     width: 100%;
-    height: 2px;
+    height: 3px;
     border-radius: 6px;
 
     background-color: var(--primary);
@@ -36,11 +36,11 @@ header {
 
 .button__menu.active span:last-child {
     width: 100%;
-    transform: rotate(45deg) translateY(-17px);
+    transform: rotate(45deg) translateY(-18px);
 }
 
 .button__menu.active span:nth-child(1) {
-    transform: rotate(-45deg) translateY(17px);
+    transform: rotate(-45deg) translateY(18px);
 }
 
 .button__menu.active span:nth-child(2) {

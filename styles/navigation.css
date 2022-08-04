@@ -36,6 +36,12 @@
     font-weight: 700;
 }
 
+@media screen and (max-width: 1080px) {
+    .navigation {
+        padding: 66px 40px 30px 40px;
+    }
+}
+
 @media screen and (max-height: 750px) {
     .navigation {
         padding: 60px 40px;
@@ -46,15 +52,11 @@
     .navigation {
         width: 100vw;
         right: -100vw;
+
+        padding: 44px 24px 24px;
     }
 
     .navigation.active {
         transform: translateX(-100vw);
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .navigation {
-        padding: 44px 24px 24px;
     }
 }
