@@ -17,4 +17,4 @@ Todo o conteúdo é gerado dinamicamente por meio da API da TMDB. Essa API forne
 ### 🖼️ Screenshots
 ![image](https://user-images.githubusercontent.com/81761545/182727273-a4620097-8f3d-42c7-bc27-db52516cff9d.png)
 ![image](https://user-images.githubusercontent.com/81761545/182727385-2e05a078-e63b-4b4d-b727-25cb00a1b025.png)
-![image](https://user-images.githubusercontent.com/81761545/182727345-7186e656-b229-4778-b95d-8977a66a5bf4.png)
+![image](https://user-images.githubusercontent.com/81761545/182909904-21fb695d-200e-45dd-8c57-8ffc23a6c619.png)
